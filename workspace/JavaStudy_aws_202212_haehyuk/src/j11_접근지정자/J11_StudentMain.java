@@ -13,11 +13,11 @@ public class J11_StudentMain {
 		
 		student1.printInfo();
 		
-		J11_StudentDefault s2 = new J11_StudentDefault();
-		s2.setName("이순신");
-		System.out.println(s2.getName());
-		s2.printInfo();
-	
+//		J11_StudentDefault s2 = new J11_StudentDefault();
+//		s2.setName("이순신");
+//		System.out.println(s2.getName());
+//		s2.printInfo();
+//	
 		
 		
 	}

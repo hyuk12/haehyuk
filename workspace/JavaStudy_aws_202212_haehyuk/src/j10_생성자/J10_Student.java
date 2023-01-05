@@ -12,16 +12,16 @@ public class J10_Student {
 	
 	J10_Student(int age) {
 		System.out.println("나이는: " + age );
-//		this.age = age;
+		this.age = age;
 	}
 	
 	J10_Student(String name) {
-//		this.name = name;
+		this.name = name;
 	}
 	
 	J10_Student(String name, int age) {
-//		this.name = name;
-//		this.age = age;
+		this.name = name;
+		this.age = age;
 	}
 	
 	void printInfo() {
