@@ -1,4 +1,4 @@
-package j03.형변환;
+package j03_형변환;
 
 public class Casting3 {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package j02.변수;
+package j02_변수;
 
 public class Variable3 {
 	public static void main(String[] args) {
