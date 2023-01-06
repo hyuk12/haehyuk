@@ -1,1 +1,33 @@
 /.metadata/
+
+# Compiled class file
+*.class
+
+# [IDE]
+bin
+target
+.settings
+
+.classpath
+.factorypath
+.project
+
+.idea
+
+# Log file
+*.Log
+
+# BlueJ files
+*.ctxt
+
+.mtj.tmp/
+
+*.jar
+*.war
+*.nar
+*.zip
+*.ear
+*.tar.gz
+*.rar
+
+hs_err_pid*

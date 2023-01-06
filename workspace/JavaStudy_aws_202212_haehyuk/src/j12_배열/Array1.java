@@ -1,5 +1,6 @@
 package j12_배열;
 
+
 public class Array1 {
 	
 	public static void main(String[] args) {
@@ -27,6 +28,7 @@ public class Array1 {
 		nums[4] = 50;
 		
 		for(int i = 0; i < 5; i++) {
+			
 			System.out.println(nums[i]);
 		}
 		
