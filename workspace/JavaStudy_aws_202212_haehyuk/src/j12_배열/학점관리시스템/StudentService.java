@@ -2,12 +2,19 @@ package j12_배열.학점관리시스템;
 
 import java.util.Scanner;
 
+
+
 public class StudentService {
 
 	private Scanner scanner;
+	private StudentRepository repository;
+	
+	private Student[] studentTable;
 	
 	public StudentService() {
 		scanner = new Scanner(System.in);
+		studentTable = new Student[0];
+		repository = new StudentRepository(studentTable);
 	}
 	
 	// run 을 했을 때 학생의 이름, 학생의 점수를 입력받는다.
@@ -19,16 +26,99 @@ public class StudentService {
 		
 		while(loopFlag) {
 			showGradeTransferSystemView();
+			select = inputSelected("학점 관리 시스템");
+			loopFlag = mainMenu(select);
 		}
 	}
 	
 	private void showGradeTransferSystemView() {
 		System.out.println("======== << 학점 관리 시스템 >> ========");
-		System.out.println("1. 학생 이름 입력: ");
-		System.out.println("2. 학생 점수 입력: ");
+		System.out.println("1. 학생 이름, 점수 입력: ");
+		System.out.println("2. 학생 이름, 점수 확인: ");
 		System.out.println("3. 학점으로 변환 출력");
 		System.out.println("========================================");
 		System.out.println("q. 프로그램 종료");
 		System.out.println();
+	}
+	
+	private char inputSelected(String menuName) {
+		System.out.println(menuName + "메뉴 선택: ");
+		char select = scanner.next().charAt(0);
+		scanner.nextLine();
+		return select;
+	}
+	
+	private void registerStudent() {
+		String name;
+		int score;
+		name = scanner.nextLine();
+		score = scanner.nextInt();
+		scanner.nextLine();
+		Student student = new Student(name, score);
+		
+		repository.saveStudent(student);
+		
+	}
+	
+	private boolean mainMenu(char select) {
+		boolean flag = true;
+		
+		if(isExit(select)) {
+			flag = false;
+		}else {
+			if(select == '1') {			
+				registerStudent();
+				
+			}else if(select == '2') {				
+				System.out.println(repository.toString());
+				
+			}else if(select == '3') {
+			
+//				if(score < 0 || score > 100 ) {
+//					System.out.println("학점 변환이 어렵습니다.");
+//				}else if(score > 89) {
+//					System.out.println(name + "학생의 학점은 A학점입니다." );
+//				}else if(score > 79) {
+//					System.out.println(name + "학생의 학점은 B학점입니다." );
+//				}else if(score > 69) {
+//					System.out.println(name + "학생의 학점은 C학점입니다." );
+//				}else if(score > 59) {
+//					System.out.println(name + "학생의 학점은 D학점입니다." );
+//				}else {
+//					System.out.println(name + "학생의 학점은 F학점입니다.");
+//				}
+			}else {
+				System.out.println(errorMessage());
+			}
+			System.out.println();
+		}
+		return flag;
+	}
+	
+	private boolean isExit(char select) {
+		return select == 'q' || select == 'Q';
+	}
+	
+	private String errorMessage() {
+		return "### <<< 번호를 다시 입력해주세요. >>> ###";
+	}
+	
+	private void scoreToGrade(String name, int score) {
+		
+		
+		
+		if(score < 0 || score > 100) {
+			System.out.println("학점 변환이 어렵습니다.");
+		}else if(score > 89) {
+			System.out.println(name + "학생의 학점은 A학점입니다");
+		}else if(score > 79) {
+			System.out.println(name + "학생의 학점은 B학점입니다");
+		}else if(score > 69) {
+			System.out.println(name + "학생의 학점은 C학점입니다");
+		}else if(score > 59) {
+			System.out.println(name + "학생의 학점은 D학점입니다");
+		}else {
+			System.out.println(name + "학생의 학점은 F학점입니다");
+		}
 	}
 }

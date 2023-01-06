@@ -25,5 +25,12 @@ public class Student {
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	@Override
+	public String toString() {
+		return "학생의 이름= " + name + ", 점수= " + score ;
+	}
+	
+	
 	
 }

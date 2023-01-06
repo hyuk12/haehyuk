@@ -8,6 +8,6 @@ public class J12_UserMain {
 		service.run();
 		service.stop();
 		
-//		service.inputSelect("q");
+
 	}
 }
