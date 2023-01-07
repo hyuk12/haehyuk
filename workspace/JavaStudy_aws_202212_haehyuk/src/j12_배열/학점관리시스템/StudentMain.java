@@ -6,5 +6,6 @@ public class StudentMain {
 		StudentService service = new StudentService();
 		
 		service.run();
+		service.stop();
 	}
 }

@@ -33,11 +33,8 @@ public class StudentRepository {
 		studentTable = newArray;
 	}
 	
-	private Student[] transferArray(Student[] oldArray, Student[] newArray) {
-		for(int i = 0; i < oldArray.length; i++) {
-			newArray[i] = oldArray[i];
-		}
-		return newArray;
+	private void transferArray(Student[] oldArray, Student[] newArray) {
+		System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
 	}
 
 	@Override
