@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class StudentRepository {
 
 	private Student[] studentTable;
-	
+
 	public StudentRepository(Student[] student) {
 
 		this.studentTable = student;

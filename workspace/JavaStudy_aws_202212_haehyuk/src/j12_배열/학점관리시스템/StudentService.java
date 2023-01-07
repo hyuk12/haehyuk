@@ -6,25 +6,26 @@ import java.util.Scanner;
 
 public class StudentService {
 
+	private String name;
+	private int score;
 	private final Scanner scanner;
 	private final StudentRepository repository;
-	
-	private final Student[] studentTable;
-	
+
 	public StudentService() {
+
 		scanner = new Scanner(System.in);
-		studentTable = new Student[0];
+		Student[] studentTable = new Student[0];
 		repository = new StudentRepository(studentTable);
 
 	}
-	
+
 	// run 을 했을 때 학생의 이름, 학생의 점수를 입력받는다.
 	// 입력 받은 정보로 A,B,C,D,F 학점으로 나누어 출력하는 시스템
-	
+
 	public void run() {
 		boolean loopFlag = true;
 		char select = '\0';
-		
+
 		while(loopFlag) {
 			showGradeTransferSystemView();
 			select = inputSelected("학점 관리 시스템");
@@ -44,7 +45,7 @@ public class StudentService {
 		}
 		System.out.println("프로그램 종료");
 	}
-	
+
 	private void showGradeTransferSystemView() {
 		System.out.println("======== << 학점 관리 시스템 >> ========");
 		System.out.println("1. 학생 이름, 점수 입력: ");
@@ -54,7 +55,7 @@ public class StudentService {
 		System.out.println("q. 프로그램 종료");
 		System.out.println();
 	}
-	
+
 	private char inputSelected(String menuName) {
 		System.out.println(menuName + "메뉴 선택: ");
 		char select = scanner.next().charAt(0);
@@ -62,8 +63,7 @@ public class StudentService {
 		return select;
 	}
 
-	String name;
-	int score;
+
 	private void registerStudent() {
 		name = scanner.nextLine();
 		score = scanner.nextInt();
