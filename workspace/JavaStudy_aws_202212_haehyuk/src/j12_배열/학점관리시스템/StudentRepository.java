@@ -10,7 +10,7 @@ public class StudentRepository {
 
 		this.studentTable = student;
 	}
-	
+
 	public Student[] getStudent() {
 		return studentTable;
 	}

@@ -65,9 +65,13 @@ public class StudentService {
 
 
 	private void registerStudent() {
+		System.out.println("학생 이름: ");
 		name = scanner.nextLine();
+
+		System.out.println("점수 입력: ");
 		score = scanner.nextInt();
 		scanner.nextLine();
+
 		Student student = new Student(name, score);
 		
 		repository.saveStudent(student);
@@ -77,17 +81,17 @@ public class StudentService {
 	private void scoreToGrade(String name, int score) {
 
 		if(score < 0 || score > 100) {
-			System.out.println("학점 변환이 어렵습니다.");
+			System.out.println("학점 변환이 어렵습니다, 다시 입력해주세요.");
 		}else if(score > 89) {
-			System.out.println(name + "학생의 학점은 A학점입니다");
+			System.out.println(name + " 학생의 학점은 A학점입니다");
 		}else if(score > 79) {
-			System.out.println(name + "학생의 학점은 B학점입니다");
+			System.out.println(name + " 학생의 학점은 B학점입니다");
 		}else if(score > 69) {
-			System.out.println(name + "학생의 학점은 C학점입니다");
+			System.out.println(name + " 학생의 학점은 C학점입니다");
 		}else if(score > 59) {
-			System.out.println(name + "학생의 학점은 D학점입니다");
+			System.out.println(name + " 학생의 학점은 D학점입니다");
 		}else {
-			System.out.println(name + "학생의 학점은 F학점입니다");
+			System.out.println(name + " 학생의 학점은 F학점입니다");
 		}
 	}
 
