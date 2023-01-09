@@ -1,5 +1,7 @@
 package j12_배열;
 
+import java.util.Arrays;
+
 // 저장소 개념 repository
 public class J12_UserRepository {
 
@@ -7,6 +9,8 @@ public class J12_UserRepository {
 
 	public J12_UserRepository(J12_User[] userTable) {
 		this.userTable = userTable;
+		
+		
 	}
 	
 	public J12_User[] getUserTable() {
