@@ -149,7 +149,7 @@ public class J12_UserService {
 	
 	private void updateUserCheck() {
 		String checkUsername = null;
-		System.out.println("수정 할 사용자 이름을 입력하세요: ");
+		System.out.print("수정 할 사용자 이름을 입력하세요: ");
 		
 		checkUsername = repository.findUserByUsername(scanner.nextLine()).getUsername();
 		
