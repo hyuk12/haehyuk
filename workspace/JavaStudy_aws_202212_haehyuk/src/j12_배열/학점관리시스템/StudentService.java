@@ -1,5 +1,7 @@
 package j12_배열.학점관리시스템;
 
+import j12_배열.J12_User;
+
 import java.util.Scanner;
 
 
@@ -9,12 +11,12 @@ public class StudentService {
 	
 	private final Scanner scanner;
 	private final StudentRepository repository;
-	private Student student;
 
-	public StudentService(Student student, StudentRepository repository) {
+
+	public StudentService(StudentRepository repository) {
 
 		scanner = new Scanner(System.in);
-		this.student = student;
+
 		this.repository = repository ;
 
 	}
@@ -23,6 +25,7 @@ public class StudentService {
 	// 입력 받은 정보로 A,B,C,D,F 학점으로 나누어 출력하는 시스템
 
 	public void run() {
+
 		boolean loopFlag = true;
 		char select = '\0';
 
@@ -46,6 +49,15 @@ public class StudentService {
 		System.out.println("프로그램 종료");
 	}
 
+	private Student verifyName() {
+		String name = null;
+
+
+		System.out.println("학생이름: ");
+		name = scanner.nextLine();
+
+		return repository.findUserByUsername(name);
+	}
 	private void showGradeTransferSystemView() {
 		System.out.println("======== << 학점 관리 시스템 >> ========");
 		System.out.println("1. 학생 이름, 점수 입력: ");
@@ -76,45 +88,46 @@ public class StudentService {
 	}
 
 	private void registerStudent() {
-		
+		String name = null;
+		int score = 0;
 		
 		System.out.println("학생 이름: ");
-		student.setName(scanner.nextLine());
+		name = scanner.nextLine();
 
 		System.out.println("점수 입력: ");
-		student.setScore(scanner.nextInt());
+		score = scanner.nextInt();
 		scanner.nextLine();
 
+		Student student = new Student(name, score);
 		repository.saveStudent(student);
 
 	}
 	
-	private void scoreToGrade(String name, int score) {
-		
-		name = student.getName();
+	private void scoreToGrade() {
+		int score = 0;
+		String name = null;
+		Student student = verifyName();
+
 		score = student.getScore();
+		name = student.getName();
 
 		if(score < 0 || score > 100) {
 			System.out.println("학점 변환이 어렵습니다, 다시 입력해주세요.");
 		}else if(score > 89) {
-			System.out.println(name + " 학생의 학점은 A학점입니다");
+			System.out.println(name+ " 학생의 학점은 A학점입니다");
 		}else if(score > 79) {
 			System.out.println(name + " 학생의 학점은 B학점입니다");
 		}else if(score > 69) {
-			System.out.println(name + " 학생의 학점은 C학점입니다");
+			System.out.println(name+ " 학생의 학점은 C학점입니다");
 		}else if(score > 59) {
 			System.out.println(name + " 학생의 학점은 D학점입니다");
 		}else {
-			System.out.println(name + " 학생의 학점은 F학점입니다");
+			System.out.println(name+ " 학생의 학점은 F학점입니다");
 		}
 	}
 
 	private boolean mainMenu(char select) {
 		boolean flag = true;
-		Student student = new Student();
-		
-		String name = student.getName();
-		int score = student.getScore();
 
 		if(isExit(select)) {
 			flag = false;
@@ -122,11 +135,10 @@ public class StudentService {
 		}else {
 			if(select == '1') {
 				registerStudent();
-
 			}else if(select == '2') {
 				showStudent();
 			}else if(select == '3') {
-				scoreToGrade(name, score);
+				scoreToGrade();
 			}
 			else {
 				System.out.println(errorMessage());

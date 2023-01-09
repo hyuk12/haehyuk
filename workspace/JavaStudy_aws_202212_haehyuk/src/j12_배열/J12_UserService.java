@@ -91,7 +91,7 @@ public class J12_UserService {
 				
 		System.out.println("===============================");
 		
-		J12_User user = new J12_User();
+		J12_User user = new J12_User(username, password, name, email);
 		repository.saveUser(user);
 	}
 	
@@ -219,7 +219,7 @@ public class J12_UserService {
 		System.out.print("새로운 비밀번호를 확인해주세요: ");
 		newPasswordCheck = scanner.nextLine();
 		
-		if(compareVeriable(newPassword, newPasswordCheck)) {
+		if(!compareVeriable(newPassword, newPasswordCheck)) {
 			System.out.println("비밀번호가 일치하지 않습니다.");
 			return;
 		}
