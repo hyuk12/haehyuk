@@ -120,7 +120,7 @@ public class J12_UserService {
 			}else if(select == '3') {
 				findByUsernamePrint();
 			}else if(select == '4') {
-				updateMainView();
+				updateRun();
 			}else {
 				System.out.println(getSelectedErrorMessage());
 			}
@@ -130,7 +130,7 @@ public class J12_UserService {
 		return flag;
 	}
 	
-	private void updateMainView() {
+	private void updateRun() {
 		
 		boolean updateLoopFlag = true;
 		char select = '\0';
