@@ -134,11 +134,15 @@ public class J12_UserService {
 		
 		boolean updateLoopFlag = true;
 		char select = '\0';
+		String checkUsername = null;
+		
+		System.out.print("수정 할 사용자 이름을 입력하세요: ");
+		checkUsername = repository.findUserByUsername(scanner.nextLine()).getUsername();
 		
 		while(updateLoopFlag) {
 			
 			
-			updateUserCheck();
+			updateUserCheck(checkUsername);
 			updateShowMainMenu();
 			select = inputSelect("수정");
 			updateLoopFlag = updateMain(select);
@@ -147,14 +151,10 @@ public class J12_UserService {
 		}
 	}
 	
-	private void updateUserCheck() {
-		String checkUsername = null;
-		System.out.print("수정 할 사용자 이름을 입력하세요: ");
-		
-		checkUsername = repository.findUserByUsername(scanner.nextLine()).getUsername();
+	private void updateUserCheck(String username) {
 		
 		System.out.println("==========<< 수정 메뉴 >>===========");
-		if(checkUsername.equals(user.getUsername())) {
+		if(username.equals(user.getUsername())) {
 			System.out.println("사용자이름 : " + user.getUsername());
 		}else {
 			System.out.println("해당 사용자이름은 존재하지 않는 사용자 이름입니다.");
