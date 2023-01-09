@@ -73,16 +73,16 @@ public class J12_UserService {
 		
 		
 		System.out.println("========<< 회원 등록 >>========");
-		System.out.println("사용자 이름: ");
+		System.out.print("사용자 이름: ");
 		user.setUsername(scanner.nextLine());
 		
-		System.out.println("사용자 비번: ");
+		System.out.print("사용자 비번: ");
 		user.setPassword(scanner.nextLine());
 		
-		System.out.println("사용자 성명: ");
+		System.out.print("사용자 성명: ");
 		user.setName(scanner.nextLine());
 		
-		System.out.println("사용자 메일: ");
+		System.out.print("사용자 메일: ");
 		user.setEmail(scanner.nextLine());
 				
 		System.out.println("===============================");
@@ -91,8 +91,19 @@ public class J12_UserService {
 	}
 	
 	private void findByUsernamePrint() {
+		String username = null;
+		
 		System.out.println("사용자이름 입력: ");
-		System.out.println(repository.findUserByUsername(scanner.nextLine()));
+		username = scanner.nextLine();
+		
+		user = repository.findUserByUsername(username);
+		
+		if(user ==null) {
+			System.out.println("사용자의 이름이 없습니다.");
+			return;
+		}
+		
+		System.out.println(user.toString());
 	}
 	
 	private boolean mainMenu(char select) {
