@@ -127,8 +127,8 @@ public class J12_UserService {
 		while(updateLoopFlag) {
 			
 			
-			updateShowMainMenu();
 			updateUserCheck();
+			updateShowMainMenu();
 			select = inputSelect("수정");
 			updateLoopFlag = updateMain(select);
 			
@@ -203,7 +203,7 @@ public class J12_UserService {
 			System.out.println();
 			
 			if(newPassword.equals(newPasswordCheck) && !newPassword.equals(oldPassword)) {
-				oldPassword = newPassword;
+				user.setPassword(newPassword);
 				System.out.println("비밀번호 변경완료!");
 				return;
 			}else {
@@ -239,7 +239,7 @@ public class J12_UserService {
 			System.out.println();
 			
 			if(newName.equals(newNameCheck) && !newName.equals(oldName)) {
-				oldName = newName;
+				user.setName(newName);
 				System.out.println("이름 변경완료!");
 				return;
 			}else {
@@ -273,7 +273,7 @@ public class J12_UserService {
 			System.out.println();
 			
 			if(newEmail.equals(newEmailCheck) && !newEmail.equals(oldEmail)) {
-				oldEmail = newEmail;
+				user.setEmail(newEmail);
 				System.out.println("이메일 변경완료!");
 				return;
 			}else {
