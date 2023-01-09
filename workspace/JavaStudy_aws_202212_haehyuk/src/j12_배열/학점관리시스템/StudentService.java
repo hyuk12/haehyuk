@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class StudentService {
 
-	private String name;
-	private int score;
+	
 	private final Scanner scanner;
 	private final StudentRepository repository;
+	private Student student;
 
-	public StudentService() {
+	public StudentService(Student student, StudentRepository repository) {
 
 		scanner = new Scanner(System.in);
-		Student[] studentTable = new Student[0];
-		repository = new StudentRepository(studentTable);
+		this.student = student;
+		this.repository = repository ;
 
 	}
 
@@ -57,28 +57,42 @@ public class StudentService {
 	}
 
 	private char inputSelected(String menuName) {
-		System.out.println(menuName + "메뉴 선택: ");
+		System.out.print(menuName + "메뉴 선택: ");
 		char select = scanner.next().charAt(0);
 		scanner.nextLine();
 		return select;
 	}
 
+	private void showStudent() {
+		Student[] students = repository.getStudent();
+		
+		System.out.println("=====<<학생 정보 조회>>=====");
+		
+		for(Student student : students) {
+			System.out.println(student.toString());
+		}
+		
+		System.out.println("============================");
+	}
 
 	private void registerStudent() {
+		
+		
 		System.out.println("학생 이름: ");
-		name = scanner.nextLine();
+		student.setName(scanner.nextLine());
 
 		System.out.println("점수 입력: ");
-		score = scanner.nextInt();
+		student.setScore(scanner.nextInt());
 		scanner.nextLine();
 
-		Student student = new Student(name, score);
-		
 		repository.saveStudent(student);
 
 	}
 	
 	private void scoreToGrade(String name, int score) {
+		
+		name = student.getName();
+		score = student.getScore();
 
 		if(score < 0 || score > 100) {
 			System.out.println("학점 변환이 어렵습니다, 다시 입력해주세요.");
@@ -97,15 +111,20 @@ public class StudentService {
 
 	private boolean mainMenu(char select) {
 		boolean flag = true;
+		Student student = new Student();
+		
+		String name = student.getName();
+		int score = student.getScore();
 
 		if(isExit(select)) {
 			flag = false;
+			
 		}else {
 			if(select == '1') {
 				registerStudent();
 
 			}else if(select == '2') {
-				System.out.println(repository.toString());
+				showStudent();
 			}else if(select == '3') {
 				scoreToGrade(name, score);
 			}

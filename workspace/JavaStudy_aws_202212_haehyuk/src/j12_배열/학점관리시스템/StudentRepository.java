@@ -21,10 +21,10 @@ public class StudentRepository {
 		studentTable[studentTable.length - 1] = student;
 	}
 	
-	private Student[] extendArray(int length) {
+	private void extendArray(int length) {
 		Student[] newArray = new Student[studentTable.length + length];
 		transferArray(studentTable, newArray);
-		return newArray;
+		studentTable = newArray;
 	}
 	
 	//배열 길이 하나 늘리기

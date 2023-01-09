@@ -18,6 +18,7 @@ public class J12_UserRepository {
 		userTable[userTable.length - 1] = user;
 	}
 	
+	
 	private void extendArray(int length) {
 		J12_User[] newArray = new J12_User[userTable.length + length];
 		trasferDataToNewArray(userTable, newArray);
@@ -35,4 +36,38 @@ public class J12_UserRepository {
 			newArray[i] = oldArray[i];
 		}
 	}
+	
+	public J12_User findUserByUsername(String username) {
+		J12_User user = null;
+		
+		for(J12_User u : userTable) {
+			if(u == null) {
+				continue;
+			}
+			if(u.getUsername().equals(username)) {
+				user = u;
+				break;
+			}
+		}
+		
+		return user;
+	}
+	
+	public String updateUserByUsername(String username) {
+		J12_User user = null;
+		
+		for(J12_User u : userTable) {
+			if(u == null) {
+				continue;
+			}
+			if(u.getUsername().equals(username)) {
+				user = u;
+				break;
+			}
+		}
+		
+		return user.getName();
+	}
+		
 }
+
