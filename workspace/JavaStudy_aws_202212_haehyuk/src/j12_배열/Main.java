@@ -7,6 +7,22 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int N = 0;
 
+		int[] numbers = new int[5];
+
+		numbers[0] = 1;
+		numbers[1] = 2;
+		numbers[2] = 3;
+		numbers[3] = 4;
+		numbers[4] = 5;
+
+		for (int i = 0; i < numbers.length; i++) {
+			System.out.println(numbers[i]);
+		}
+
+		for(int i : numbers) {
+			System.out.println(i);
+		}
+
 		
 		
 		N = sc.nextInt();
