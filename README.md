@@ -81,7 +81,7 @@
 
 ---
 
-# 2. 변수
+[# 2. 변수](https://github.com/hyuk12/haehyuk/blob/main/workspace/JavaStudy_aws_202212_haehyuk/src/j02_%EB%B3%80%EC%88%98/veriable.md)
 </br>
 
 - 변수 : 데이터를 담을 수 있는 공간
