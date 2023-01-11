@@ -25,3 +25,12 @@ public Student(String name, int age) {
 hashCode로 비교하는 경우는 객체가 다르더라도 값만 같으면 true를 반환하고 싶을 때 쓰인다
 
 hash값으로 객체의 안에 있는 값을 변경해서 보내주기에 값이같으면 같다 항상
+
+getClass()
+
+Class.class 는 클래스들의 정보가 담겨있다.
+주소값, 패키지명, 클래스명, 가지고있는 메소드들 등
+
+타입을 확인할 때 getClass()를 이용한다 그리고 클래스이름을 가지고 오거나 변수, 메소드등을 확인할 때 쓰인다
+
+obj.getClass() == Object.class
