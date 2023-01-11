@@ -7,6 +7,8 @@ public class ObjectHashCode {
         Student s2 = new Student("홍길동", 30);
         SubStudent s3 = new SubStudent("홍길동", 30);
 
+
+
         System.out.println(s1.hashCode());
         System.out.println(s2.hashCode());
 
