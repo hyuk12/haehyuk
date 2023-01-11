@@ -4,7 +4,7 @@ public class ObjectEquals {
 
     public static void main(String[] args) {
         String name1 = "김유신";
-        String name2 = "김유신";
+        String name2 = "홍길동";
         String name3 = new String("김유신");
 
         // 실제로 String 은 클래스기 때문에 new String(""); 으로 생성을 해주어야 하지만 이미 리터럴으로 문자열이 정해져 있어 저렇게 가능하다.
