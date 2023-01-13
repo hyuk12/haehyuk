@@ -1,5 +1,5 @@
 package j_exam;
 
-public class Chair {
+public class Chair extends Furniture{
 
 }

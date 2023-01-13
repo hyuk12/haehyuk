@@ -2,8 +2,8 @@ package j_exam;
 
 public abstract class Furniture {
 	
-	// 가구 일련번호, 
-	// 재료
-	// 색깔
+	private int furnitureCode;// 가구 일련번호,
+	private String ingredient;// 재료
+	private String color;// 색깔
 
 }
