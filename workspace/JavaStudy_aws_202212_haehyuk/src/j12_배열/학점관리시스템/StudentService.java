@@ -55,7 +55,7 @@ public class StudentService {
 
 		System.out.println("학생이름: ");
 		name = scanner.nextLine();
-
+		
 		return repository.findUserByUsername(name);
 	}
 	private void showGradeTransferSystemView() {

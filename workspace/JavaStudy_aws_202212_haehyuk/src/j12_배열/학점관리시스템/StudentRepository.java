@@ -44,7 +44,7 @@ public class StudentRepository {
 		Student student = null;
 
 		for(Student s : studentTable) {
-			if(s == null) {
+			if(s != null) {
 				continue;
 			}
 			if(s.getName().equals(name)) {
