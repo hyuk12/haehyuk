@@ -9,17 +9,16 @@ public class FurnitureFactory implements MakeFurniture{
     private int furnitureCode;
     private String productName;
 
-    public FurnitureFactory(String productName) {
+    public FurnitureFactory(Furniture f) {
         furnitureCode = CODE + ai;
         ai++;
-        this.productName = productName;
+        this.f = f;
     }
 
     @Override
-    public int make(Furniture furniture) {
-        Furniture f ;
-        f = furniture;
-        System.out.println(furniture.getClass().getSimpleName());
+    public int make() {
+
+        System.out.println(f.getClass().getSimpleName());
         return furnitureCode;
     }
 
