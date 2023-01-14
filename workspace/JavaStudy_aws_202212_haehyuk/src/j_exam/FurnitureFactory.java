@@ -15,8 +15,6 @@ public class FurnitureFactory implements MakeFurniture{
 
     @Override
     public void make(Furniture f) {
-        FurnitureRepository repository = new FurnitureRepository();
-        repository.insertFurniture(f);
         System.out.println(f.getType() + " 제품 " + f.getProductName() + " 를 생산합니다 예약번호는 " + f.getFurnitureCode() + " 입니다.");
     }
 
@@ -31,6 +29,8 @@ public class FurnitureFactory implements MakeFurniture{
 
         System.out.println("예약번호 " + f.getFurnitureCode() + " 인 제품 " + f.getProductName() + " 을 배달합니다.");
 	}
+
+
 	
 
 }
