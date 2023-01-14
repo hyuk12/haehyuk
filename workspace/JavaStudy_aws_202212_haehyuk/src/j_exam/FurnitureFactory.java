@@ -4,10 +4,6 @@ public class FurnitureFactory implements MakeFurniture{
 	private static FurnitureFactory instance = null;
 
 
-
-
-
-
     private FurnitureFactory() {}
 
     public static FurnitureFactory getInstance() {

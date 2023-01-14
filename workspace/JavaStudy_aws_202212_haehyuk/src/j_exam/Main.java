@@ -12,5 +12,6 @@ public class Main {
 		FurnitureFactory.getInstance().make(f2);
 		FurnitureFactory.getInstance().pave(f1);
 		FurnitureFactory.getInstance().deliver(f1);
+
 	}
 }
