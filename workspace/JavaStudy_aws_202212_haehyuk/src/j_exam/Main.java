@@ -1,12 +1,18 @@
 package j_exam;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
-		Bed b1 = new Bed();
-		b1.productName = "침대";
-		FurnitureFactory factory = new FurnitureFactory(b1);
-		System.out.println(factory.make());
+		List<Furniture> furniture = new ArrayList<Furniture>();
+		FurnitureRepository repository = new FurnitureRepository(furniture);
+		ReservationService service = new ReservationService(repository);
+
+
+
+		service.reservation();
 
 	}
 }

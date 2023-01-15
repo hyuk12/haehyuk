@@ -1,38 +1,36 @@
 package j_exam;
 
 public class FurnitureFactory implements MakeFurniture{
-	
-	private Furniture f;
-    private static final int CODE = 20230000;
-    private static int ai = 1;
+	private static FurnitureFactory instance = null;
 
-    private int furnitureCode;
-    private String productName;
 
-    public FurnitureFactory(Furniture f) {
-        furnitureCode = CODE + ai;
-        ai++;
-        this.f = f;
+    private FurnitureFactory() {}
+
+    public static FurnitureFactory getInstance() {
+        if (instance == null) {
+            instance = new FurnitureFactory();
+        }
+        return instance;
     }
 
     @Override
-    public int make() {
-
-        System.out.println(f.getClass().getSimpleName());
-        return furnitureCode;
+    public void make(Furniture f) {
+        System.out.println(f.getType() + " 제품 " + f.getProductName() + " 를 생산합니다 예약번호는 " + f.getFurnitureCode() + " 입니다.");
     }
 
     @Override
-	public void pave(int furnitureCode) {
+	public void pave(Furniture f) {
 
-		
+        System.out.println("예약번호 " + f.getFurnitureCode() + " 인 제품 " + f.getProductName() + " 을 포장합니다.");
 	}
 
 	@Override
-	public void deliver() {
-		// TODO Auto-generated method stub
-		
+	public void deliver(Furniture f) {
+
+        System.out.println("예약번호 " + f.getFurnitureCode() + " 인 제품 " + f.getProductName() + " 을 배달합니다.");
 	}
+
+
 	
 
 }

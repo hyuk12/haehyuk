@@ -10,12 +10,11 @@ public class StudentArrayList {
 			String searchName,
 			int newYear) {
 		
-		for (Student student : students) {
+		for (Student student : students)
 			if (student.getName().equals(searchName)) {
 				student.setYear(newYear);
 				return;
 			}
-		}
 		System.out.println("검색 실패!");	
 	}
 	
