@@ -96,7 +96,7 @@
 
 ---
 
-# [5. 조건문]()
+# [5. 조건문](https://github.com/hyuk12/haehyuk/blob/main/workspace/JavaStudy_aws_202212_haehyuk/src/j06_%EC%A1%B0%EA%B1%B4/Condition.md)
 </br>
 
 ---
