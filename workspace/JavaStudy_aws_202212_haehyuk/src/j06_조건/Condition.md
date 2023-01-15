@@ -1,4 +1,4 @@
-# [5. 제어문]()
+# 5. 제어문
 
 ## 조건문
 
@@ -54,4 +54,34 @@ if(grade == null) {
 ![if문 실습 예제 콘솔화면](../img/스크린샷_20230103_054127.png)
 
 ---
+
+### switch / case 문
+- switch ~ case : 해당 조건에 맞는 case를 찾는 문법이다.
+
+- default : if문의 else와 같은 문법
+
+- 실습예제 코드
+```java
+String select = "C선택";
+		
+switch (select) {
+	case "A선택" :
+		System.out.println("PC(A)를 연결합니다.");
+		break;
+	case "B선택" :
+		System.out.println("PC(B)를 연결합니다.");
+		break;
+	case "C선택" :
+		System.out.println("PC(C)를 연결합니다.");
+		break;
+	case "D선택" :
+		System.out.println("PC(D)를 연결합니다.");	
+		break;
+	default :
+		System.out.println("else와 같은 역할");
+}
+```
+
+- 실습 코드 예제 콘솔 화면 </br></br>
+![switch문 콘솔화면](../img/스위치.png)
 
