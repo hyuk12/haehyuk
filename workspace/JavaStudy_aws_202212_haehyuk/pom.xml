@@ -18,6 +18,12 @@
       <version>1.18.24</version>
       <scope>compile</scope>
     </dependency>
+    <!-- jbcrypt -->
+	<dependency>
+	    <groupId>org.mindrot</groupId>
+	    <artifactId>jbcrypt</artifactId>
+	    <version>0.4</version>
+	</dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
