@@ -19,6 +19,12 @@ public class UserRepository {
 
 	private UserRepository() {
 		userDataList = new ArrayList<>();
+		userDataList.add(User.builder()
+				.username("aaa")
+				.password("1234")
+				.name("홍길동")
+				.email("admin@example.com")
+				.build());
 	}
 
 	public void saveUser(User user) {
@@ -30,6 +36,18 @@ public class UserRepository {
 
 		for (User u : userDataList) {
 			if(u.getUsername().equals(username)) {
+				user = u;
+				break;
+			}
+		}
+		return user;
+	}
+
+	public User findUserByEmail(String email) {
+		User user = null;
+
+		for (User u : userDataList) {
+			if(u.getEmail().equals(email)) {
 				user = u;
 				break;
 			}

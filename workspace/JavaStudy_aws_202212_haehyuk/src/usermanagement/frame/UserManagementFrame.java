@@ -2,24 +2,25 @@ package usermanagement.frame;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import com.google.gson.JsonObject;
+import usermanagement.service.UserService;
+
 import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class UserManagementFrame extends JFrame {
-	
-	
 
+	private List<JTextField> loginFields;
+	private List<JTextField> registerFields;
 	/**
 	 * 
 	 */
@@ -53,6 +54,9 @@ public class UserManagementFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public UserManagementFrame() {
+		loginFields = new ArrayList<>();
+		registerFields = new ArrayList<>();
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 500);
 		mainPanel = new JPanel();
@@ -79,6 +83,7 @@ public class UserManagementFrame extends JFrame {
 		registerPanel.setLayout(null);
 		
 		/////////////////////////////////////////////////////////////////////////
+		// 로그인 화면으로 가는 sign in 을 눌렀을 때 로직////////////////////////
 		
 		JLabel signinLink = new JLabel("Sign in");
 		signinLink.setForeground(new Color(135, 244, 248));
@@ -87,11 +92,14 @@ public class UserManagementFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				mainCard.show(mainPanel, "loginPanel");
+				clearFields(registerFields);
 			}
 		});
 		signinLink.setHorizontalAlignment(SwingConstants.CENTER);
 		signinLink.setBounds(234, 414, 106, 25);
 		registerPanel.add(signinLink);
+		
+		////////////////////////////////////////////////////////////
 		
 		JLabel logoText = new JLabel("UserManagement");
 		logoText.setFont(new Font("CookieRun Bold", Font.BOLD, 22));
@@ -119,11 +127,13 @@ public class UserManagementFrame extends JFrame {
 		registerPanel.add(registerText);
 		
 		registerUsernameField = new JTextField();
+		registerUsernameField.setHorizontalAlignment(SwingConstants.CENTER);
 		registerUsernameField.setColumns(10);
 		registerUsernameField.setBounds(22, 144, 338, 30);
 		registerPanel.add(registerUsernameField);
 		
 		registerPasswordField = new JPasswordField();
+		registerPasswordField.setHorizontalAlignment(SwingConstants.CENTER);
 		registerPasswordField.setBounds(22, 203, 338, 30);
 		registerPanel.add(registerPasswordField);
 		
@@ -140,6 +150,7 @@ public class UserManagementFrame extends JFrame {
 		registerPanel.add(registerPasswordLabel);
 		
 		registerNameField = new JTextField();
+		registerNameField.setHorizontalAlignment(SwingConstants.CENTER);
 		registerNameField.setColumns(10);
 		registerNameField.setBounds(22, 260, 338, 30);
 		registerPanel.add(registerNameField);
@@ -157,23 +168,55 @@ public class UserManagementFrame extends JFrame {
 		registerPanel.add(lblEmail);
 		
 		registerEmailField = new JTextField();
+		registerEmailField.setHorizontalAlignment(SwingConstants.CENTER);
 		registerEmailField.setColumns(10);
 		registerEmailField.setBounds(22, 314, 338, 30);
 		registerPanel.add(registerEmailField);
 		
+		////////////////////////////////////////////////////
+		// 회원 가입 버튼 눌렀을 때 로직////////////////////
+		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JsonObject userJson = new JsonObject();
+				userJson.addProperty("username", registerUsernameField.getText());
+				userJson.addProperty("password", registerPasswordField.getText());
+				userJson.addProperty("name", registerNameField.getText());
+				userJson.addProperty("email", registerEmailField.getText());
+
+				UserService userService = UserService.getInstance();
+				Map<String, String> response = userService.register(userJson.toString());
+
+				if(response.containsKey("error")) {
+					JOptionPane.showMessageDialog(null, response.get("error"), "error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				JOptionPane.showMessageDialog(null, response.get("ok"), "ok", JOptionPane.INFORMATION_MESSAGE);
+				mainCard.show(mainPanel, "loginPanel");
+				clearFields(registerFields);
+
+				System.out.println(userJson.toString());
+			}
+		});
 		btnRegister.setForeground(Color.BLACK);
 		btnRegister.setFont(new Font("CookieRun Bold", Font.PLAIN, 14));
 		btnRegister.setBackground(Color.LIGHT_GRAY);
 		btnRegister.setBounds(22, 365, 338, 30);
 		registerPanel.add(btnRegister);
 		
+		/////////////////////////////////////////////////////////
+		
 		usernameField = new JTextField();
+		usernameField.setHorizontalAlignment(SwingConstants.CENTER);
 		usernameField.setBounds(23, 197, 338, 30);
 		loginPanel.add(usernameField);
 		usernameField.setColumns(10);
 		
 		passwordField = new JPasswordField();
+		passwordField.setHorizontalAlignment(SwingConstants.CENTER);
 		passwordField.setBounds(23, 273, 338, 30);
 		loginPanel.add(passwordField);
 		
@@ -189,12 +232,27 @@ public class UserManagementFrame extends JFrame {
 		passwordLabel.setBounds(23, 248, 79, 15);
 		loginPanel.add(passwordLabel);
 		
+		//////////////////////////////////////////////////////
+		/////////////로그인 버튼을 눌렀을 때 로직/////////////
+		
 		JButton loginButton = new JButton("Login");
+		loginButton.addMouseListener(new MouseAdapter() {
+			// 무조건 구현을 해야하는 interface를 추상클래스에 구현을 해놓고
+			// 추상 메소드가아닌 일반 메소드로 빼놓아 이 추상클래스를 생성할 당시에
+			// 쓰고 싶은 메소드를 골라서 override 구현하고픈 것만 하면된다.
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		loginButton.setForeground(new Color(0, 0, 0));
-		loginButton.setBackground(new Color(192, 192, 192));
+		loginButton.setBackground(new Color(240, 240, 240));
 		loginButton.setFont(new Font("CookieRun Bold", Font.PLAIN, 14));
 		loginButton.setBounds(23, 334, 338, 30);
 		loginPanel.add(loginButton);
+		
+		///////////////////////////////////////////////////////
 		
 		JLabel signupDesc = new JLabel("Don't have an accounts?");
 		signupDesc.setFont(new Font("D2Coding", Font.PLAIN, 12));
@@ -203,13 +261,15 @@ public class UserManagementFrame extends JFrame {
 		loginPanel.add(signupDesc);
 		
 		/////////////////////////////////////////////////////////////////////
+		/// sign up 을 눌렀을 때 실행되는 로직///////////////////////////////
 		
 		JLabel signupLink = new JLabel("Sign up");
 		signupLink.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("회원가입 클릭함");
-				mainCard.show(mainPanel, "registerPanel"); 
+				mainCard.show(mainPanel, "registerPanel");
+				clearFields(loginFields);
 			}
 		});
 		signupLink.setForeground(new Color(135, 244, 248));
@@ -226,6 +286,24 @@ public class UserManagementFrame extends JFrame {
 		forgotPasswordLink.setHorizontalAlignment(SwingConstants.CENTER);
 		forgotPasswordLink.setBounds(82, 426, 201, 15);
 		loginPanel.add(forgotPasswordLink);
-		
+
+		loginFields.add(usernameField);
+		loginFields.add(passwordField);
+
+		registerFields.add(registerUsernameField);
+		registerFields.add(registerPasswordField);
+		registerFields.add(registerNameField);
+		registerFields.add(registerEmailField);
 	}
+	///////////////////////////////////////////////////////
+
+	private void clearFields(List<JTextField> textFields) {
+		for (JTextField textField : textFields) {
+			if (textField.getText().isEmpty()) {
+				continue;
+			}
+			textField.setText("");
+		}
+	}
+
 }
