@@ -1,0 +1,29 @@
+관계형 데이터베이스의 특징중 가장 중요한 것은
+
+중복이 없어야 한다.
+
+변할 수 있는 값은 primary key로 주면 안된다.
+
+2정규형이라는 것은
+
+composite primary key 가 있어야
+가능하다.
+
+3정규형은
+
+2정규형 이후 부수적인 정보들을 나누어 주는 것이다.
+
+2정규형과 3정규형의 차이는 composite primary key의 유무이다.
+
+
+lecture_name : 과목 			student_name : 학생 이름	lecture_price:강의료	instructor_name : 강사 이름			univercity_name: 강사 학위
+							
+java							홍길동					10000				세종대왕							서울대
+java							김유신					10000				세종대왕							서울대
+python						이순신					15000				왕건								연세대
+c							문익점					20000				이성계							고려대
+
+
+primary key 를 두개 이상으로 주게되면
+
+프라이머리키가 조합이 된 것 통째로 하나의 프라이머리키 즉 composite primary key 가 되기 때문에 중복을 주지 않는 키값으로 줄 때는 unique를 준다.
