@@ -3,6 +3,8 @@ package usermanagement.entity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Builder
 @Data
 public class User {
@@ -11,5 +13,6 @@ public class User {
 	private String password;
 	private String name;
 	private String email;
-	
+
+	List<RoleDtl> roleDtls;
 }
