@@ -8,6 +8,7 @@ import usermanagement.entity.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class UserRepository {
         try {
             con = pool.getConnection();
             String sql = "insert into user_mst values(0,?,?,?,?)";
-            pstmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             pstmt.setString(1, user.getName());
             pstmt.setString(2, user.getPassword());
@@ -59,11 +60,37 @@ public class UserRepository {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         } finally {
             pool.freeConnection(con, pstmt, rs);
         }
         
+        return successCount;
+    }
+
+    public int saveRoleDtl(RoleDtl roleDtl) {
+        int successCount = 0;
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        
+
+        try {
+            con = pool.getConnection();
+            String sql = "insert into role_dtl values(0, ?, ?)";
+            pstmt = con.prepareStatement(sql);
+
+            pstmt.setInt(1, roleDtl.getRoleId());
+            pstmt.setInt(2, roleDtl.getUserId());
+
+            successCount = pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            pool.freeConnection(con, pstmt);
+        }
+
         return successCount;
     }
 

@@ -3,6 +3,7 @@ package usermanagement.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.mindrot.jbcrypt.BCrypt;
+import usermanagement.entity.RoleDtl;
 import usermanagement.entity.User;
 import usermanagement.repository.UserRepository;
 
@@ -60,6 +61,14 @@ public class UserService {
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         
         userRepository.saveUser(user);
+
+        RoleDtl roleDtl = RoleDtl.builder()
+                .roleId(3)
+                .userId(user.getUserId())
+                .build();
+
+        userRepository.saveRoleDtl(roleDtl);
+
         response.put("ok", "회원가입 성공");
 
         return response;
