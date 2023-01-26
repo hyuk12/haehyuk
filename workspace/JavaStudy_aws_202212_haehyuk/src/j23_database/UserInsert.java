@@ -1,6 +1,7 @@
 package j23_database;
 
-import java.sql.Array;
+import usermanagement.entity.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
-import usermanagement.entity.User;
 
 public class UserInsert {
 	
@@ -52,6 +50,9 @@ public class UserInsert {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			// 무조건 진행되는 로직 연결됫던 것들을 끊어준다.
+			pool.freeConnection(connection, preparedStatement, resultSet);
 		}
 		
 		return successCount;
@@ -60,42 +61,46 @@ public class UserInsert {
 	
 	public int saveRoles(Map<String, Object> map) {
 		int successCount = 0;
-		
-		
+
+
 		String sql = null;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		
+
 		try {
 			connection = pool.getConnection();
 			List<Integer> roles = (List<Integer>) map.get("roles");
 			User user = (User) map.get("user");
-			
+
 			sql = "insert into role_dtl values";
 			for (int i = 0; i < roles.size(); i++) {
 				sql += "(0, ?, ?)";
-				
-				if(i < roles.size() - 1) {
+
+				if (i < roles.size() - 1) {
 					sql += ",";
 				}
 			}
-			
-			
+
+
 			preparedStatement = connection.prepareStatement(sql);
-			
+
 			for (int i = 0; i < roles.size(); i++) {
 				preparedStatement.setInt((i * 2) + 1, roles.get(i));
 				preparedStatement.setInt((i * 2) + 2, user.getUserId());
 			}
-			
+
 			successCount = preparedStatement.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			// 무조건 진행되는 로직 연결됫던 것들을 끊어준다.
+			pool.freeConnection(connection, preparedStatement);
 		}
-		
 		return successCount;
 	}
+
+
 	
 	public static void main(String[] args) {
 		

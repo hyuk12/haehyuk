@@ -19,7 +19,7 @@ public class RoleInsert {
 		String sql = null;
 		Connection con = null;
 	    PreparedStatement pstmt = null;
-		
+		ResultSet rs = null;
 		try {
 			con = pool.getConnection();
 			sql = "insert into role_mst values (0, ?)";
@@ -31,7 +31,7 @@ public class RoleInsert {
 			
 			int newKey = 0;
 			
-			ResultSet rs = pstmt.getGeneratedKeys();
+			 rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				newKey = rs.getInt(1);
 			}
@@ -39,6 +39,8 @@ public class RoleInsert {
 			System.out.println(newKey != 0 ? "새로운 키값 : " + newKey : "키가 생성되지 않");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			pool.freeConnection(con, pstmt, rs);
 		}
 		
 		return successCount;
