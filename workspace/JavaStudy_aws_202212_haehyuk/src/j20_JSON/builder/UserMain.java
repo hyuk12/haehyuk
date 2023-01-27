@@ -15,5 +15,15 @@ public class UserMain {
         System.out.println(user2);
 
 
+
+        User2 user3 = User2.builder()
+                .username("aaa")
+                .password("1234")
+                .name("John")
+                .password("1234")
+                .build();
+
+        System.out.println(user3);
+
     }
 }
