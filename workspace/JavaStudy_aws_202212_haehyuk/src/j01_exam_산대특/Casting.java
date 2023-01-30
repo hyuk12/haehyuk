@@ -6,7 +6,6 @@ abstract class Program {
 
 class Java extends Program {
 
-
     @Override
     public void develop() {
         System.out.println("자바 프로그램을 개발합니다.");
@@ -18,6 +17,7 @@ class Java extends Program {
 }
 
 class C extends Program {
+
     @Override
     public void develop() {
         System.out.println("C 프로그램을 개발합니다.");
@@ -35,13 +35,13 @@ public class Casting {
         programs[1] = new C();
 
         for (int i = 0; i < programs.length; i++) {
+            programs[i].develop();
+
             if (programs[i].getClass() == Java.class) {
-                Java java = (Java)programs[i];
-                java.develop();
+                Java java = (Java) programs[i];
                 java.garbageCollection();
             } else {
-                C c = (C)programs[i];
-                c.develop();
+                C c = (C) programs[i];
                 c.defineStructure();
             }
         }
