@@ -23,6 +23,8 @@ public class Main2 {
     public static void main(String[] args) {
         List<String> subjects = Arrays.asList(new String[]{"C", "Java", "Python"});
 
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
         SubjectService subjectService = new SubjectService(subjects);
         subjectService.showSubjects();
     }
