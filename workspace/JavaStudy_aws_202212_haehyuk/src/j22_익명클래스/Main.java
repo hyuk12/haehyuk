@@ -14,7 +14,7 @@ public class Main {
         };
 
         Calculator c3 = (x, y) -> x / y;
-        
+
         System.out.println(c1.calc(1,2));
         System.out.println(c3.calc(10,2));
 
