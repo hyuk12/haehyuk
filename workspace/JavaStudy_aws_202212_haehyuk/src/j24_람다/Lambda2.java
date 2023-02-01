@@ -7,7 +7,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Lambda2 {
 
@@ -71,5 +75,48 @@ public class Lambda2 {
         userMap.forEach((key, value) -> {
             System.out.println(key + " : " + value);
         });
+
+        //4, Function<T, R> - R apply(T t)
+        Function<String, Integer> f1 = num -> {
+            int i = Integer.parseInt(num);
+            return i;
+        };
+
+        int number = f1.apply("1234231");
+        int number1 = f1.apply("12342321");
+        System.out.println(number + number1);
+
+        //5. Predicate<T> - boolean test(T t)
+        Predicate<String> p1 = str -> str.startsWith("a");
+        Predicate<String> p2 = str -> str.startsWith("b");
+
+        Function<Predicate<String>, Boolean> function =
+                predicate -> predicate.or(str -> str.startsWith("c")).test("abc");
+
+        boolean rs = function.apply(str -> str.startsWith("a"));
+
+        System.out.println(rs);
+
+        String name = "apple";
+        String name2 = "banana";
+        System.out.println(p1.or(p2).test(name));
+
+        List<String> nameList = new ArrayList<>();
+        nameList.add("손오공");
+        nameList.add("손오반");
+        nameList.add("손오천");
+        nameList.add("베지터");
+
+        // 스트림은 일회용이다.
+        Stream<String> stream = nameList.stream().filter(name3 -> name3.startsWith("손"));
+//        stream.forEach(System.out::println);
+        List<String> newList = stream.collect(Collectors.toList());
+
+        System.out.println(newList);
+        System.out.println("=================");
+        nameList.stream()
+                .filter(name3 -> name3.startsWith("손"))
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
     }
 }
