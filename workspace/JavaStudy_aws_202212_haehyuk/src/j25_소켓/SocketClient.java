@@ -1,9 +1,9 @@
 package j25_소켓;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import com.google.gson.Gson;
+import usermanagement.dto.RequestDto;
+
+import java.io.*;
 import java.net.Socket;
 import java.rmi.UnknownHostException;
 
@@ -20,7 +20,15 @@ public class SocketClient {
             // 버퍼드 리더도 Reader 를 상속받는다.
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            System.out.println(reader.readLine());
+//            System.out.println(reader.readLine());
+
+            OutputStream outputStream = socket.getOutputStream();
+            PrintWriter writer = new PrintWriter(outputStream, true);
+
+            Gson gson = new Gson();
+            RequestDto<String> dto = new RequestDto<>("test", "test data");
+
+            writer.println(gson.toJson(dto));
 
         } catch (UnknownHostException e){
             e.printStackTrace();

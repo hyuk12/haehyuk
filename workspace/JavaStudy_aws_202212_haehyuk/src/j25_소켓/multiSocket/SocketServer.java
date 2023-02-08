@@ -9,10 +9,15 @@ public class SocketServer extends Thread{
 
     public static List<SocketServer> clientList = new ArrayList<>();
     private Socket socket;
+    private InputStream inputStream;
+    private OutputStream outputStream;
+
+    private static int autoIncreament = 1;
     private String name;
 
     public SocketServer(Socket socket) {
         this.socket = socket;
+        name = "user" + autoIncreament++;
         clientList.add(this);
     }
 
@@ -22,43 +27,38 @@ public class SocketServer extends Thread{
         System.out.println("IP: " + socket.getInetAddress());
 
         try {
-            InputStream inputStream = socket.getInputStream();
+            inputStream = socket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
 
-            OutputStream outputStream = socket.getOutputStream();
-            PrintWriter writer = new PrintWriter(outputStream, true);
+            sendToAll(name + "님이 접속하였습니다.");
 
-            writer.println("서버 접속 성공!");
-            writer.println("사용자 이름을 입력하세요!");
-
-            String messase = null;
-            boolean loginFlag = false;
-            while((messase = reader.readLine()) != null) {
-                if(name == null) {
-                    name = messase;
-                    System.out.println("\n서버에 " + name + "님이 접속하였습니다.");
+            while(true) {
+                String message = reader.readLine();
+                if(message == null) {
+                    break;
                 }
-
-                for(SocketServer s : clientList) {
-                    try {
-                        outputStream = s.socket.getOutputStream();
-                        writer = new PrintWriter(outputStream, true);
-                        if(!loginFlag) {
-                            writer.println("\n" + s.name + "님이 접속하였습니다.");
-                            loginFlag = true;
-                            continue;
-                        }
-                        writer.println("\n" + s.name + ": " + messase);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                sendToAll(message);
             }
-
-
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+                outputStream.close();
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // 브로드 캐스팅
+    private void sendToAll(String message) throws IOException {
+        for(SocketServer socketServer : clientList) {
+            outputStream = socketServer.socket.getOutputStream();
+            PrintWriter writer = new PrintWriter(outputStream, true);
+            writer.println(name + ": " + message);
         }
     }
 }
