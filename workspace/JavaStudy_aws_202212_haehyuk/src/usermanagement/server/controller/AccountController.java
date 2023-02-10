@@ -1,12 +1,18 @@
 package usermanagement.server.controller;
 
 import usermanagement.dto.ResponseDto;
-import usermanagement.entity.User;
+import usermanagement.service.UserService;
+
+import java.util.Map;
 
 public class AccountController {
 
     private static AccountController instance;
-    private AccountController() {}
+    private UserService userService;
+
+    private AccountController() {
+        userService = UserService.getInstance();
+    }
 
     public static AccountController getInstance() {
         if (instance == null) {
@@ -15,8 +21,15 @@ public class AccountController {
         return instance;
     }
 
-    public ResponseDto<?> register (User user) {
 
-        return new ResponseDto<String>("ok", "회원가입 성공");
+    public ResponseDto<?> register (String userJson) {
+
+        Map<String, String> resultMap = userService.register(userJson);
+
+        if(resultMap.containsKey("error")) {
+            return new ResponseDto<String>("error", resultMap.get("error"));
+        }
+
+        return new ResponseDto<String>("ok", resultMap.get("ok"));
     }
 }

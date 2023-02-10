@@ -216,24 +216,19 @@ public class UserManagementFrame extends JFrame {
 					System.out.println("응답옴!!");
 					ResponseDto<?> responseDto = gson.fromJson(response, ResponseDto.class);
 
-					System.out.println(responseDto);
+					if(responseDto.getCode().equals("error")) {
+						JOptionPane.showMessageDialog(null, responseDto.getBody(), responseDto.getCode(), JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+
+					JOptionPane.showMessageDialog(null, responseDto.getBody(), responseDto.getCode(), JOptionPane.INFORMATION_MESSAGE);
+					mainCard.show(mainPanel, "loginPanel");
+					clearFields(registerFields);
+
+
 				} catch (IOException ex) {
 					ex.printStackTrace();
 				}
-
-//				UserService userService = UserService.getInstance();
-//				Map<String, String> response = userService.register(userJson.toString());
-//
-//				if(response.containsKey("error")) {
-//					JOptionPane.showMessageDialog(null, response.get("error"), "error", JOptionPane.ERROR_MESSAGE);
-//					return;
-//				}
-//
-//				JOptionPane.showMessageDialog(null, response.get("ok"), "ok", JOptionPane.INFORMATION_MESSAGE);
-//				mainCard.show(mainPanel, "loginPanel");
-//				clearFields(registerFields);
-//
-//				System.out.println(userJson.toString());
 			}
 		});
 		btnRegister.setForeground(Color.BLACK);

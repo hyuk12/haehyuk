@@ -3,7 +3,6 @@ package usermanagement.server;
 import com.google.gson.Gson;
 import usermanagement.dto.RequestDto;
 import usermanagement.dto.ResponseDto;
-import usermanagement.entity.User;
 import usermanagement.server.controller.AccountController;
 
 import java.io.*;
@@ -57,10 +56,8 @@ public class SocketServer extends Thread{
 
         switch (resource) {
             case "register":
-                User user = gson.fromJson((String)requestDto.getBody(), User.class);
-                ResponseDto<?> responseDto = AccountController.getInstance().register(user);
+                ResponseDto<?> responseDto = AccountController.getInstance().register((String)requestDto.getBody());
                 sendResponse(responseDto);
-
                 break;
             default:
                 System.out.println("해당 요청은 처리할 수 없습니다.(404)");
