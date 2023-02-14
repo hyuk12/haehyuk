@@ -40,7 +40,7 @@ public class ChattingClient extends JFrame {
 	private JTextField portInput;
 	private JTextArea contentView;
 	private JTextField messageInput;
-	private JList userList;
+	private JList<String> userList;
 	private DefaultListModel<String> userListModel;
 
 	public static void main(String[] args) {
@@ -74,50 +74,59 @@ public class ChattingClient extends JFrame {
 		ipInput.setColumns(10);
 
 		JButton connectButton = new JButton("연결");
-		connectButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String ip = null;
-				int port = 0;
 
-				ip = ipInput.getText();
-				port = Integer.parseInt(portInput.getText());
+			connectButton.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					String ip = null;
+					int port = 0;
 
-				try {
-					socket = new Socket(ip, port);
+					ip = ipInput.getText();
+					port = Integer.parseInt(portInput.getText());
 
-					JOptionPane.showMessageDialog(null,
-							socket.getInetAddress() + "서버 접속",
-							"접속성공",
-							JOptionPane.INFORMATION_MESSAGE);
+					try {
+						if (socket == null){
+							socket = new Socket(ip, port);
+							JOptionPane.showMessageDialog(null,
+									socket.getInetAddress() + "서버 접속",
+									"접속성공",
+									JOptionPane.INFORMATION_MESSAGE);
 
-					ClientReceive clientReceive = new ClientReceive(socket);
-					clientReceive.start();
+							ClientReceive clientReceive = new ClientReceive(socket);
+							clientReceive.start();
 
-					username = JOptionPane.showInputDialog(null, "사용자 이름을 입력해 주세요.", "이름입력", JOptionPane.INFORMATION_MESSAGE);
-					JoinReqDto joinReqDto = new JoinReqDto(username);
-					String joinReqDtoJson = gson.toJson(joinReqDto);
-					RequestDto requestDto = new RequestDto("join", joinReqDtoJson);
-					String requestDtoJson = gson.toJson(requestDto);
+							connectButton.setEnabled(false);
 
-					OutputStream outputStream = socket.getOutputStream();
-					PrintWriter out = new PrintWriter(outputStream, true);
-					out.println(requestDtoJson);
 
-				} catch (ConnectException e1) {
+							username = JOptionPane.showInputDialog(null, "사용자 이름을 입력해 주세요.", "이름입력", JOptionPane.INFORMATION_MESSAGE);
+							JoinReqDto joinReqDto = new JoinReqDto(username);
+							String joinReqDtoJson = gson.toJson(joinReqDto);
+							RequestDto requestDto = new RequestDto("join", joinReqDtoJson);
+							String requestDtoJson = gson.toJson(requestDto);
 
-					JOptionPane.showMessageDialog(null,
-							"서버 접속 실패",
-							"접속실패",
-							JOptionPane.ERROR_MESSAGE);
+							OutputStream outputStream = socket.getOutputStream();
+							PrintWriter out = new PrintWriter(outputStream, true);
+							out.println(requestDtoJson);
+						}
 
-				} catch (UnknownHostException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
+
+
+					} catch (ConnectException e1) {
+
+						JOptionPane.showMessageDialog(null,
+								"서버 접속 실패",
+								"접속실패",
+								JOptionPane.ERROR_MESSAGE);
+
+					} catch (UnknownHostException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
-			}
-		});
+			});
+
+
 		connectButton.setBounds(603, 9, 65, 34);
 		contentPane.add(connectButton);
 
@@ -151,20 +160,7 @@ public class ChattingClient extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					if(!messageInput.getText().isBlank()) {
-						try {
-							OutputStream outputStream = socket.getOutputStream();
-							PrintWriter out = new PrintWriter(outputStream, true);
-
-							MessageReqDto messageReqDto = new MessageReqDto("all", username, messageInput.getText());
-
-							sendRequest("sendMessage", gson.toJson(messageReqDto));
-							messageInput.setText("");
-
-						} catch (IOException e1) {
-							e1.printStackTrace();
-						}
-					}
+					sendMessage();
 				}
 			}
 		});
@@ -174,19 +170,7 @@ public class ChattingClient extends JFrame {
 		sendButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(!messageInput.getText().isBlank()) {
-					try {
-						OutputStream outputStream = socket.getOutputStream();
-						PrintWriter out = new PrintWriter(outputStream, true);
-
-						MessageReqDto messageReqDto = new MessageReqDto("all", username, messageInput.getText());
-
-						sendRequest("sendMessage", gson.toJson(messageReqDto));
-						messageInput.setText("");
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
+				sendMessage();
 			}
 		});
 		sendButton.setBounds(572, 436, 97, 42);
@@ -205,6 +189,20 @@ public class ChattingClient extends JFrame {
 			out.println(gson.toJson(requestDto));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
+		}
+	}
+
+	private void sendMessage() {
+		if(!messageInput.getText().isBlank()) {
+
+			String toUser = userList.getSelectedIndex() == 0 ? "all" : userList.getSelectedValue();
+
+			MessageReqDto messageReqDto = new MessageReqDto(toUser, username, messageInput.getText());
+
+			sendRequest("sendMessage", gson.toJson(messageReqDto));
+			messageInput.setText("");
+
+
 		}
 	}
 }
