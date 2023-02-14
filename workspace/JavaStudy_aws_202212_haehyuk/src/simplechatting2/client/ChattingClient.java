@@ -141,6 +141,7 @@ public class ChattingClient extends JFrame {
 		contentPane.add(contentScroll);
 
 		contentView = new JTextArea();
+		contentView.setEditable(false);
 		contentScroll.setViewportView(contentView);
 
 		JScrollPane userListScroll = new JScrollPane();
@@ -159,8 +160,10 @@ public class ChattingClient extends JFrame {
 		messageInput.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-					sendMessage();
+				if(socket != null) {
+					if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+						sendMessage();
+					}
 				}
 			}
 		});
