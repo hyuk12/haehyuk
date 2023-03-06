@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid #000;
+            width: 300px;
+            height: 300px;
+        }
+        thead {
+            background-color: antiquewhite;
+        }
+        tbody {
+            background-color: aliceblue;
+        }
+        th, td{
+            text-align: center;
+            border: 1px solid #000;
+        }
+        
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th></th>
+                <th>나이</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td colspan="4" rowspan="2">홍길동</td>
+                <td></td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>김유신</td>
+                <td></td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>이성계</td>
+                <td></td>
+                <td>28</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
