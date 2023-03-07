@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inputstudy</title>
+    <style>
+        #username {
+            font-size: 50px;
+        }
+
+        .check {
+            font-size: 50px;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div>
+            <label for="username" style="font-size: 30px;">아이디</label>
+            <input type="text"  id="username" name="useernameValue" value="aaa" placeholder="아이디를 입력하세요" >
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" placeholder="비밀번호 입력">
+        </div>
+
+        <div>
+            <label for="chk1" class="check">체크1</label>
+            <input type="checkbox" id="chk1">
+            <label for="chk2" class="check">체크2</label>
+            <input type="checkbox" id="chk2">
+            <label for="chk3" class="check">체크3</label>
+            <input type="checkbox" id="chk3">
+            <label for="chk4" class="check">체크4</label>
+            <input type="checkbox" id="chk4">
+        </div>
+
+        <div>
+            <label for="rdo1">라디오1</label>
+            <input type="radio" id="rdo1" name="rdo1">
+            <label for="rdo2">라디오2</label>
+            <input type="radio" id="rdo2" name="rdo1">
+            <label for="rdo3">라디오3</label>
+            <input type="radio" id="rdo3" name="rdo2" value="rdo2-1" checked>
+            <label for="rdo4">라디오4</label>
+            <input type="radio" id="rdo4" name="rdo2" value="rdo2-2">
+        </div>
+
+        <div>
+            <label for="number">수량</label>
+            <input type="number" id="number" name="stock" min="0" max="10000" step="1000">
+        </div>
+
+        <div>
+            <label for="range">볼륨</label>
+            <input type="range" id="range" min="0" max="30">
+            <span id="level"></span>
+            <script>
+                const range = document.querySelector("#range");
+                range.onchange = () => {
+                    const level = document.querySelector("#level");
+                    level.textContent = range.value;
+                }
+            </script>
+        </div>
+
+        <div>
+            <input type="date">
+            <input type="month">
+            <input type="week">
+            <input type="datetime-local">
+        </div>
+        <div>
+            <input type="file" accept=".pdf, .jpeg">
+        </div>
+
+        <div>
+            <label for="content"></label>
+            <textarea id="content" cols="30" rows="10" ></textarea>
+        </div>
+
+        <div>
+            <label for="menu"></label>
+            <select id="menu">
+                <option value="a">a</option>
+                <option value="b">b</option>
+                <option value="c">c</option>
+                <option value="d">d</option>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" list="list">
+            <datalist id="list">
+                <option value="aaa1">aaa1</option>
+                <option value="aaa2">aaa2</option>
+                <option value="bbb1">bbb1</option>
+                <option value="bbb2">bbb2</option>
+            </datalist>
+        </div>
+
+        <div>
+            <button type="button">버튼</button>
+        </div>
+    </form>
+</body>
+</html>
