@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+.container {
+    margin: 0px auto;
+    width: 1200px;
+    height: 1000px;
+    background-color: #dbdbdb;
+
+}
+
+.box {
+    display: inline-block;
+    margin: 0px 20px;
+    width: 300px;
+    height: 150px;
+
+}
+
+.box2 {
+    margin: 20px 0px;
+    width: 300px;
+    height: 150px;
+
+}
+
+.b1 {
+    margin: 0px 0px 50px;
+    background-color: red;
+}
+
+.b2 {
+    background-color: aliceblue;
+}
+
+.b3 {
+    background-color: blueviolet;
+}
+

@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+}
+
+.img-box {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #eee;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+
+.html-img {
+    width: 100%;
+}
