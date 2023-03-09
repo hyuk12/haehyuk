@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+input[type = checkbox] {
+    display: none;
+}
+
+input[type = checkbox] + label::after {
+    content: "";
+    display: flex;
+    justify-content: center;
+    border: 1px solid tomato;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 45px;
+    
+    color: white;
+}
+
+input[type = checkbox]:checked + label::after {
+    content: "⏺";
+    line-height: 47px;
+    color: tomato;
+}
+
+input[type = checkbox] + label:nth-child(6)::after {
+    border: 1px solid navajowhite;
+}

@@ -1,0 +1,40 @@
+.username-input {
+    border: none;
+    height: 30px;
+    border-bottom: 2px solid #dbdbdb;
+
+    outline: none;
+}
+
+.username-input:focus {
+    border-bottom: 2px solid #121212;
+}
+
+.username-input:active {
+    background-color: #fafafa;
+}
+
+.username-input:disabled {
+    background-color: antiquewhite;
+}
+
+.ok-btn {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    background-color: #fafafa;
+}
+
+.ok-btn:not(:disabled):hover {
+    border-color: #fefefe;
+    background-color: yellowgreen;
+}
+
+.ok-btn:not(:disabled):active {
+    background-color: rgb(86, 116, 27);
+}
+
+.ok-btn:disabled {
+    background-color: #121212;
+}

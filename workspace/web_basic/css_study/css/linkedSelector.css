@@ -1,0 +1,16 @@
+main article section label {
+    color: aquamarine;
+
+}
+
+section > input {
+    border: 3px solid rebeccapurple;
+}
+
+section h1 + input {
+    border: 1px dotted rebeccapurple;
+}
+
+article div h2 ~ label {
+    color: tomato;
+}

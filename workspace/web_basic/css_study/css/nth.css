@@ -1,0 +1,7 @@
+h1:nth-child(2) {
+    color: aqua;
+}
+
+h1:nth-of-type(2) {
+    color: antiquewhite;
+}

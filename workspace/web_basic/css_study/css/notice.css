@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header {
+    min-width: 834px;
+    background-color: #161617cc;
+}
+
+.menu-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin: 0 auto;
+    width: 998px;
+    height: 44px;
+    font-size: 12px;
+    color: #fafafa;
+}
+
+.menu-nav > li {
+    display: flex;
+    align-items: center;
+    padding: 0px 9px;
+    height: 100%;
+
+    
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    max-width: 2560px;
+}
+
+.iphone-14 {
+    background-color: bisque;
+    width: 100%;
+    height: 345px;
+}
+
+.iphone-14pro {
+    background-color: aquamarine;
+    width: 100%;
+    height: 345px;
+}
+
+.watch {
+    background-color: rgb(42, 67, 59);
+    width: 100%;
+    height: 345px;
+}
+
+.pad-mac {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 345px;
+}
+
+.pad-mac > div {
+    width: 50%;
+    height: 100%;
+}
+
+.pad-mac > div:nth-child(odd){
+    background-color: goldenrod;
+}
+
+.pad-mac > div:nth-child(even){
+    background-color: rgb(218, 82, 32);
+}
+
