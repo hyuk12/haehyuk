@@ -75,7 +75,40 @@
             </div>
         </main>
         <script>
-            const selectBtns = document.querySelectorAll('.product-select-button');
+            const buttons = document.querySelectorAll('.product-select-button');
+            const radios = document.querySelectorAll('input[name="productColor"]');
+            const colorText = document.querySelector('.color-text');
+            const image = document.querySelector('.product-image-container img');
+
+            buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 기존에 선택되어 있던 버튼의 'selected' 클래스를 제거
+                    const selectedButton = document.querySelector('.selected');
+                    selectedButton.classList.remove('selected');
+                
+                // 클릭한 버튼에 'selected' 클래스를 추가
+                    button.classList.add('selected');
+                });
+            });
+
+            radios.forEach(radio => {
+            radio.addEventListener('click', () => {
+                // 라디오 버튼이 선택되면 해당하는 색상 텍스트를 변경
+                    if (radio.id === 'c1') {
+                        colorText.textContent = '미드나이트';
+                        image.src = '../images/macbook-air-midnight-select-20220606.jpeg';
+                    } else if (radio.id === 'c2') {
+                        colorText.textContent = '스타라이트';
+                        image.src = '../images/macbook-air-starlight-select-20220606.jpeg';
+                    } else if (radio.id === 'c3') {
+                        colorText.textContent = '그레이';
+                        image.src = '../images/macbook-air-spacegray-select-20220606.jpeg';
+                    } else if (radio.id === 'c4') {
+                        colorText.textContent = '실버';
+                        image.src = '../images/macbook-air-silver-select-20220606.jpeg';
+                    }
+                });
+            });
 
         </script>
     </div>
