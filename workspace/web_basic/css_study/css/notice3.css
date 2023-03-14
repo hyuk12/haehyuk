@@ -174,10 +174,12 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px auto;
+
     padding: 20px 0px;
-    max-width: 1024px;
-    min-width: 830px;
+}
+
+.product-select-list.stopped {
+    background-color: #f9f9f9f2;
 }
 
 .product-select-button {
@@ -248,7 +250,7 @@ a {
 .product-container {
 
     margin: 0px 0px 0px 70px;
-    border: 1px solid #dbdbdb;
+   
     width: 280px;
 
 }
@@ -391,3 +393,138 @@ a {
     font-size: 14px;
     color: #0066cc;
 }
+
+.product-trade-in {
+    margin: 30px 0px;
+}
+
+.trade-in-title {
+    font-size: 14px;
+    color: #1d1d1f;
+    font-weight: 600;
+}
+
+.tarade-in-article {
+    font-size: 14px;
+    color: #1d1d1f;
+}
+
+.trade-in-start {
+    display: inline-block;
+    margin: 12px 0px 0px;
+    font-size: 14px;
+    color: #0066cc;
+}
+
+.trade-in-start:hover {
+    text-decoration: underline;
+}
+
+.choose-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 36px;
+    background-color: #0071e3;
+    color: #fff;
+}
+
+.choose-btn:hover {
+    background-color: #0278ee;
+}
+
+.choose-title {
+    padding: 24px 0px 0px;
+    font-size: 14px;
+    color: #1d1d1f;
+    font-weight: 600;
+}
+
+.choose-text {
+    padding: 0px 0px 8px;
+    font-size: 14px;
+    color: #1d1d1f;
+}
+
+.saved-link {
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    color: #0066cc;
+
+    cursor: pointer;
+}
+
+.fa-bookmark {
+    color: #0066cc;
+}
+
+.delivery {
+    display: flex;
+    padding: 20px 0px 0px ;
+}
+
+.delivery-icon {
+    font-size: 16px;
+}
+
+.delivery-info {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 10px;
+    font-size: 14px;
+    color: #1d1d1f;
+}
+
+.delivery-info span {
+    padding: 2px 0px 0px;    
+}
+
+.delivery-info span:first-child {
+    font-weight: 600;
+}
+
+.delivery-info a {
+    padding: 2px 0px 0px;  
+    color: #0066cc;
+    font-size: 14px;  
+}
+
+.delivery-info a:hover {
+    text-decoration: underline;
+}
+
+.pickup {
+    display: flex;
+    padding: 16px 0px 0px;
+}
+
+.pickup-icon {
+    padding: 2px 0px 0px;
+    font-size: 16px;
+}
+
+.pickup-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.pickup-info span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pickup-info a {
+    padding: 2px 0px 0px;
+    font-size: 14px;
+    color: #0066cc;    
+}
+
+.pickup-info a:hover {
+    text-decoration: underline;
+} 
+

@@ -62,13 +62,51 @@
                         <span class="color-text">미드나이트</span>
                         <div class="color-radio-group">
                             <input type="radio" id="c1" name="productColor">
-                            <label for="c1"></label>
+                            <label for="c1">
+                                <div class="color-circle c1"></div>
+                            </label>
                             <input type="radio" id="c2" name="productColor">
-                            <label for="c2"></label>
+                            <label for="c2">
+                                <div class="color-circle c2" ></div>
+                            </label>
                             <input type="radio" id="c3" name="productColor">
-                            <label for="c3"></label>
+                            <label for="c3">
+                                <div class="color-circle c3"></div>
+                            </label>
                             <input type="radio" id="c4" name="productColor">
-                            <label for="c4"></label>
+                            <label for="c4">
+                                <div class="color-circle c4"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="product-detail-info">
+                        <div class="cpu-image">
+                            <img src="../images/apple-m2-icon-mac-202206.png" alt="">
+                        </div>
+                        <div class="product-simple-info">8코어 CPU</div>
+                        <div class="product-simple-info">8코어 GPU</div>
+                        <div class="product-simple-info">8GB 통합 메모리</div>
+                        <div class="product-simple-info">256GB SSD 저장 장치¹</div>
+                        <ul class="product-specs-list">
+                            <li>16코어 Neural Engine</li>
+                            <li>True Tone을 갖춘 34.5cm Liquid Retina 디스플레이/li>
+                            <li>1080p FaceTime HD 카메라</li>
+                            <li>MagSafe 3 충전 포트</li>
+                            <li>Thunderbolt/USB 4 포트 2개</li>
+                            <li>Touch ID 탑재형 Magic Keyboard</li>
+                            <li>Force Touch 트랙패드</li>
+                            <li>30W USB-C 전원 어댑터</li>
+                        </ul>
+                        <div class="price-container">
+                            <div class="product-price">
+                                ₩1,690,000
+                            </div>
+                            <div class="product-price-monthly-plan">
+                                약 ₩153,636의 VAT 포함◊
+                            </div>
+                            <a href="" class="monthly-plan-link">
+                                최대 12 개월 신용 카드 할부
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -88,12 +126,15 @@
                 
                 // 클릭한 버튼에 'selected' 클래스를 추가
                     button.classList.add('selected');
+
+                // 클릭한 버튼이 m1일 경우 와 m2일경우
                 });
             });
 
             radios.forEach(radio => {
             radio.addEventListener('click', () => {
                 // 라디오 버튼이 선택되면 해당하는 색상 텍스트를 변경
+                // 라디오 버튼이 선택되면 해당하는 이미지로 변경
                     if (radio.id === 'c1') {
                         colorText.textContent = '미드나이트';
                         image.src = '../images/macbook-air-midnight-select-20220606.jpeg';
@@ -101,7 +142,7 @@
                         colorText.textContent = '스타라이트';
                         image.src = '../images/macbook-air-starlight-select-20220606.jpeg';
                     } else if (radio.id === 'c3') {
-                        colorText.textContent = '그레이';
+                        colorText.textContent = '스페이스그레이';
                         image.src = '../images/macbook-air-spacegray-select-20220606.jpeg';
                     } else if (radio.id === 'c4') {
                         colorText.textContent = '실버';
