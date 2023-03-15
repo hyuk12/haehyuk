@@ -1,0 +1,93 @@
+.menu-aside {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+
+    width: 300px;
+    height: 100%;
+    box-shadow: 1px 0px 5px 1px black;
+    background-color: #454545;
+    transition: left 1s ease;
+}
+
+.hidden-menu {
+    left: -300px;
+}
+
+.aside-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 5px 20px 10px;
+    border-bottom: 1px solid #dbdbdb;
+    background-color: #121212;
+}
+
+.header-title, .aside-header i[class*="fa"] {
+    color: #fff;
+}
+
+.menu-button {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: -13px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: none;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0;
+    width: 13px;
+    height: 60px;
+
+    background-color: #454545;
+    color: #f0e5d3;
+}
+
+.menu-button:hover, .menu-button:active {
+    background-color: #454545;
+    text-shadow: 0px 0px 5px #f0e5d3;
+}
+
+.fa-calendar-check {
+    padding: 0px 15px;
+    font-size: 18px;
+}
+
+.header-title {
+    font-size: 18px;
+    cursor: default;
+}
+
+.menu-nav {
+    padding: 20px 0px 0px;
+}
+
+.menu-items li{
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0px 20px;
+    height: 40px;
+
+    background-color: #303030;
+    color: #fff;
+    font-size: 16px;
+}
+
+.menu-items li:hover {
+    background-color: #121212;
+}
+
+.menu-items li .fa-regular {
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 16px;
+}

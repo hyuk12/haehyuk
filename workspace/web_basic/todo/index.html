@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/aside.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    
+</head>
+<body>
+    <div class="container">
+        <aside class="menu-aside hidden-menu">
+            <button class="menu-button">▶︎</button>
+            <header class="aside-header">
+                <h1 class="header-title"><i class="fa-regular fa-calendar-check"></i>TODOLIST</h1> 
+            </header>
+            <nav class="menu-nav">
+                <ul class="menu-list">
+                    <a href="" class="menu-items">
+                        <li><i class="fa-regular fa-user"></i>User Information</li>
+                    </a>
+                    <a href="" class="menu-items">
+                        <li><i class="fa-regular fa-calendar"></i>To Do List</li>
+                    </a>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-container">
+            <header class="main-header">
+                <h1 class="main-title">ToDo</h1>
+                <div class="todo-input-container">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <input type="text" class="todo-input" placeholder="Please Enter To Do...">
+                    <button class="add-todo-button"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </header>
+            <ul class="todo-content-list">
+                <li class="content-container">
+                    <div class="content-header">
+                        <div class="todo-date">2023. 03. 15</div>
+                        <div class="todo-date-time">17:42:50</div>
+                    </div>
+                    <div class="content-main">
+
+                    </div>
+                    <div class="content-footer">
+
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
+</body>
+</html>
