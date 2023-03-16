@@ -17,13 +17,13 @@
     overflow: hidden;
 }
 
-input {
+input, textarea {
     border: none;
     padding: 5px;
     outline: none;    
 }
 
-input:focus {
+input:focus, textarea {
     background-color: #fafafa;
 }
 

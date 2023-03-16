@@ -4,6 +4,10 @@
     height: 100%;
 }
 
+.main-hidden {
+    display: none;
+}
+
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -108,9 +112,126 @@
 }
 
 .content-main {
-    height: 70%;
+    padding: 10px;
+    height: 65%;
+    word-break: keep-all;
+    line-height: 25px;
 }
 
 .content-footer {
-    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 10px 10px;
+    height: 15%;
+}
+
+.modify-button, .remove-button {
+    border: none;
+    padding: 5px;
+}
+
+.info-photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.info-photo:hover {
+    opacity: 0.8;
+}
+
+.photo-file {
+    display: none;  
+}
+
+.info-photo img {
+    width: 100%;
+}
+
+.change-nav {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    
+    display: none;
+
+    border-radius: 5px;
+    padding: 5px;
+
+    background-color: #121212bb;
+    color: #f0f0f0;
+    font-size: 12px;
+}
+
+.info-photo:hover .change-nav {
+    display: block;
+}
+
+.info-main {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.info-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: default;
+
+}
+
+.button-hidden {
+    display: none;
+}
+
+.info-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.detail-left, .detail-right {
+    width: 48%;
+
+}
+
+.info-input-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.info-input-container label {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.info-input {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+
+    background-color: #f0f0f0;
+}
+
+
+.introduce-input {
+    border-bottom: 1px solid #dbdbdb;
+    width: 100%;
+    height: 100px;
+    resize: none;
+
+    background-color: #f0f0f0;
+}
+
+.info-input:disabled, .introduce-input:disabled {
+    background-color: #fff;
 }

@@ -21,16 +21,75 @@
             </header>
             <nav class="menu-nav">
                 <ul class="menu-list">
-                    <a href="" class="menu-items">
+                    <a href="javascript:void(0)" class="menu-items">
                         <li><i class="fa-regular fa-user"></i>User Information</li>
                     </a>
-                    <a href="" class="menu-items">
+                    <a href="javascript:void(0)" class="menu-items">
                         <li><i class="fa-regular fa-calendar"></i>To Do List</li>
                     </a>
                 </ul>
             </nav>
         </aside>
-        <main class="main-container">
+        <main class="main-container main-hidden">
+            <header class="main-header">
+                <h1 class="main-title">User Information</h1>
+            </header>
+            <div class="info-photo">
+                <form class="photo-form">
+                    <input type="file" class="photo-file" name="file">
+                </form>
+                <img src="./images/df0572eb-d211-43f9-ac8d-9d4e5771ed2d.jpg">
+                <div class="change-nav">
+                    클릭하여 이미지 변경
+                </div>
+            </div>
+            <div class="info-main">
+                <h1 class="info-title">
+                    About Me
+                    <button class="modify-button m-aboutme">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                    <button class="modify-button s-aboutme button-hidden">
+                        <i class="fa-regular fa-square-check"></i>
+                    </button>
+                </h1>
+                <div class="info-detail">
+                    <div class="detail-left">
+                        <div class="info-input-container">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="info-input" disabled>
+                        </div>
+                        <div class="info-input-container">
+                            <label for="email">E-Mail</label>
+                            <input type="text" id="email" class="info-input" disabled>
+                        </div>
+                    </div>
+                    <div class="detail-right">
+                        <div class="info-input-container">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" class="info-input" disabled>
+                        </div>
+                        <div class="info-input-container">
+                            <label for="github">GitHub</label>
+                            <input type="text" id="github" class="info-input" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-introduce">
+                    <h1 class="info-title">
+                        Self Introduction
+                        <button class="modify-button m-introduce">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        <button class="modify-button s-introduce button-hidden">
+                            <i class="fa-regular fa-square-check"></i>
+                        </button>
+                    </h1>
+                    <textarea class="introduce-input" disabled></textarea>    
+                </div>
+            </div>
+        </main>
+        <main class="main-container ">
             <header class="main-header">
                 <h1 class="main-title">ToDo</h1>
                 <div class="todo-input-container">
@@ -40,20 +99,13 @@
                 </div>
             </header>
             <ul class="todo-content-list">
-                <li class="content-container">
-                    <div class="content-header">
-                        <div class="todo-date">2023. 03. 15</div>
-                        <div class="todo-date-time">17:42:50</div>
-                    </div>
-                    <div class="content-main">
-
-                    </div>
-                    <div class="content-footer">
-
-                    </div>
-                </li>
+                
             </ul>
         </main>
     </div>
+    <script src="./js/aside.js"></script>
+    <script src="./js/information.js"></script>
+    <script src="./js/todo.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
