@@ -27,6 +27,41 @@ class TodoEvent {
             }
         } 
     }
+
+    
+    addEventRemoveTodoClick() {
+        const removeButtons = document.querySelectorAll('.content-footer .remove-button');
+        removeButtons.forEach((removeButton, index) => {
+            removeButton.onclick = () => {
+                ModalService.getInstance().showRemoveModal(index);
+            }
+        });
+    }
+
+    
+    
+    addEventModifyTodoClick() {
+        const modifyButtons = document.querySelectorAll('.content-footer .modify-button');
+        modifyButtons.forEach((modifyButton, index) => {
+            modifyButton.onclick = () => {
+                ModalService.getInstance().showModifyModal(index);
+                const modalModifyContent = document.querySelector('.modal-modify-content');
+                const contents =TodoService.getInstance().todoList[index].todoContent;
+                modalModifyContent.focus();
+                modalModifyContent.value = contents;
+            }
+        });
+    }
+
+    addEventModifyTodoKeyUp() {
+        const todoInput = document.querySelector('.modal-modify-content');
+        todoInput.onkeyup = () => {
+            if(window.event.keyCode == 13) {
+                const modifyTodoButton = document.querySelector('.modal-ok-button');
+                modifyTodoButton.click();
+            }
+        } 
+    }
 }
 
 class TodoService {
@@ -45,6 +80,11 @@ class TodoService {
         }else {
             this.todoList = JSON.parse(localStorage.getItem('todoList'));
         }
+        this.loadTodoList();
+    }
+
+    updateLocalStorage() {
+        localStorage.setItem('todoList', JSON.stringify(this.todoList));
         this.loadTodoList();
     }
 
@@ -78,16 +118,13 @@ class TodoService {
         }
 
         this.todoList.push(todoObj);
-        localStorage.setItem('todoList', JSON.stringify(this.todoList));
-        this.loadTodoList();
+        this.updateLocalStorage();
     }
 
     loadTodoList() {
         const todoContentList = document.querySelector('.todo-content-list');
         todoContentList.innerHTML = ``;
         this.todoList.forEach(todoObj => {
-            if(todoObj.todoContent != '') {
-
                 todoContentList.innerHTML += `
                 <li class="content-container">
                 <div class="content-header">
@@ -107,7 +144,10 @@ class TodoService {
                 </div>
             </li>
                 `;
-            }
+            
         });
+        TodoEvent.getInstance().addEventRemoveTodoClick();
+        TodoEvent.getInstance().addEventModifyTodoClick();
+        // TodoEvent.getInstance().addEventModifyTodoKeyUp();
     }
 }

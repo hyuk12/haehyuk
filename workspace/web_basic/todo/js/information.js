@@ -18,7 +18,8 @@ class InformationEvent {
     addEventPhotoChange() {
         const photoFile = document.querySelector('.photo-file');
         photoFile.onchange = () => {
-            fileService.getInstance().changePhoto();
+            
+            FileService.getInstance().changePhoto();
         }
     }
     
@@ -62,7 +63,6 @@ class InformationEvent {
             });
         }
     }
-    
 
     addEventSelfIntroductionModifyClick() {
         const selfIntroductionModifyButton = document.querySelector('.m-introduce');
@@ -88,17 +88,38 @@ class InformationEvent {
             introduceInput.disabled = true;
         }
     }
-
 }
 
-
-
-
-class fileService {
+class InformationService {
     static #instance = null;
     static getInstance() {
         if(this.#instance == null){
-            this.#instance = new fileService();
+            this.#instance = new InformationService();
+        }
+        return this.#instance;
+    }
+
+    loadInfo() {
+        this.loadInfoPhoto();
+    }
+
+    loadInfoPhoto() {
+        const infoPhotoImg = document.querySelector('.info-photo img');
+        const infoPhoto = localStorage.getItem('infoPhoto');
+        if (infoPhoto== null) {
+            infoPhotoImg.src = './images/noimage-760x460.png'
+        }else {
+            infoPhotoImg.src = infoPhoto;
+        }
+    }
+
+}
+
+class FileService {
+    static #instance = null;
+    static getInstance() {
+        if(this.#instance == null){
+            this.#instance = new FileService();
         }
         return this.#instance;
     }
@@ -107,6 +128,11 @@ class fileService {
         const photoForm = document.querySelector('.photo-form');
         const formData = new FormData(photoForm);
         const fileValue = formData.get('file');
+        
+        if(fileValue.size == 0) {
+            return;
+        }
+
         this.showPreview(fileValue);
     }
 
@@ -118,7 +144,9 @@ class fileService {
         fileReader.onload = (e) => {
             const photoImg = document.querySelector('.info-photo img');
             photoImg.src = e.target.result;
+            localStorage.setItem('infoPhoto', photoImg.src);
         }
+
     }
 }
 
