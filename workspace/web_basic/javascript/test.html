@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkbox {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        const body = document.querySelector('body');
+        body.innerHTML = `
+        <button id="create-button">Create Checkbox</button>
+        <button id="delete-button">Delete Checked</button>
+
+        <div id="checkbox-container"></div>
+
+        `;
+        const createButton = document.querySelector('#create-button');
+        const deleteButton = document.querySelector('#delete-button');
+        const checkboxContainer = document.querySelector('#checkbox-container');
+        let checkboxes = [];
+
+        createButton.addEventListener('click', function() {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkboxes.push(checkbox);
+        checkboxContainer.appendChild(checkbox);
+        });
+
+        deleteButton.addEventListener('click', function() {
+        let checkedBoxes = [];
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+            checkedBoxes.push(checkbox);
+            }
+        });
+        
+        for (let i = checkedBoxes.length - 1; i >= 0; i--) {
+            let index = checkboxes.indexOf(checkedBoxes[i]);
+            console.log(`Checked checkbox #${index + 1} has been deleted.`);
+            checkboxContainer.removeChild(checkedBoxes[i]);
+            checkboxes = checkboxes.filter(checkbox => checkbox !== checkedBoxes[i]);
+        }
+        });
+    </script>
+</body>
+</html>
