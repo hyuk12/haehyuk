@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import PropsTest from "./components/PropsTest";
+import UserInfo from "./components/UserInfo";
+import {useState} from "react";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    const userList = [
+        {username: 'aaa', name: 'AAA', email: 'aaa@aaa.com'},
+        {username: 'bbb', name: 'BBB', email: 'bbb@bbb.com'},
+        {username: 'ccc', name: 'CCC', email: 'ccc@ccc.com'},
+        {username: 'ddd', name: 'DDD', email: 'ddd@ddd.com'}
+    ]
+
+    return (
+      <>
+        <PropsTest
+            username='aaa'
+            name='bbb'
+            email='aaa@gmail.com'
+            handlerClick={() => {
+                console.log('클릭함!!!');
+                let user1 = userList[0];
+                console.log(user1);
+            }}
+        />
+          {userList.map(user => (<UserInfo username={user.username} name={user.name} email={user.email}/>))}
+
+      </>
   );
 }
 
