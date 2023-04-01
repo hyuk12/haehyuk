@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang=ko>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <div class="container">
+        <main class="main-container ">
+            <header class="main-header">
+                <h1 class="main-title">User Information</h1>
+            </header>
+            <div class="info-photo">
+                <form class="photo-form">
+                    <input type="file" class="photo-file" name="file">
+                </form>
+                <img src="">
+                <div class="change-nav">
+                    클릭하여 이미지 변경
+                </div>
+            </div>
+            <div class="info-main">
+                <h1 class="info-title">
+                    About Me
+                    <button class="modify-button m-aboutme">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </button>
+                    <button class="modify-button s-aboutme button-hidden">
+                        <i class="fa-regular fa-square-check"></i>
+                    </button>
+                </h1>
+                <div class="info-detail">
+                    <div class="detail-left">
+                        <div class="info-input-container">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="info-input" disabled>
+                        </div>
+                        <div class="info-input-container">
+                            <label for="email">E-Mail</label>
+                            <input type="text" id="email" class="info-input" disabled>
+                        </div>
+                    </div>
+                    <div class="detail-right">
+                        <div class="info-input-container">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" class="info-input" disabled>
+                        </div>
+                        <div class="info-input-container">
+                            <label for="github">GitHub</label>
+                            <input type="text" id="github" class="info-input" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-introduce">
+                    <h1 class="info-title">
+                        Self Introduction
+                        <button class="modify-button m-introduce">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        <button class="modify-button s-introduce button-hidden">
+                            <i class="fa-regular fa-square-check"></i>
+                        </button>
+                    </h1>
+                    <textarea class="introduce-input" disabled></textarea>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
