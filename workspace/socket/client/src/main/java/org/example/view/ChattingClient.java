@@ -14,6 +14,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.Socket;
+import java.util.Objects;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -28,7 +29,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import org.example.dto.request.CreateRoomReqDto;
 import org.example.dto.request.ExitReqDto;
@@ -77,7 +80,7 @@ public class ChattingClient extends JFrame {
 	private JPanel joinPanel ;
 	private JButton joinButton;
 	private JTextField joinNickname;
-	private ImageIcon kakaoImage;
+
 
 	private String roomName;
 	private String nickname;
@@ -141,7 +144,7 @@ public class ChattingClient extends JFrame {
 		mainPanel.add(joinPanel, "joinPanel");
 		joinPanel.setLayout(null);
 		
-		kakaoImage = new ImageIcon(ChattingClient.class.getResource("../image/카카오메인이미지.png"));
+		ImageIcon kakaoImage = new ImageIcon("src/main/java/org/example/image/kakaoMain.png");
 		joinPanel.setLayout(null);
 		JLabel background = new JLabel(kakaoImage);
 		background.setLocation(62, 90);
@@ -241,7 +244,7 @@ public class ChattingClient extends JFrame {
 		joinButton.setBounds(62, 559, 328, 49);
 		joinPanel.add(joinButton);
 
-		ImageIcon joinButtonImg = new ImageIcon(ChattingClient.class.getResource("../image/로그인.png"));
+		ImageIcon joinButtonImg = new ImageIcon("src/main/java/org/example/image/login.png");
 		joinButton.setIcon(joinButtonImg);
 		joinButton.setBorderPainted(false);
 		joinButton.setFocusPainted(false);
@@ -256,7 +259,7 @@ public class ChattingClient extends JFrame {
 		chattingListPanel.setLayout(null);
 		chattingListPanel.setBackground(new Color(255, 217, 0));
 
-		ImageIcon plusButton = new ImageIcon(ChattingClient.class.getResource("../image/플러스버튼이미지.png"));
+		ImageIcon plusButton = new ImageIcon("src/main/java/org/example/image/plusButton.png");
 		JButton roomPlusButton = new JButton("");
 
 		roomPlusButton.addMouseListener(new MouseAdapter() {
@@ -373,7 +376,7 @@ public class ChattingClient extends JFrame {
 		exitRoomButton.setBounds(373, 0, 97, 70);
 		chattingRoomPanel.add(exitRoomButton);
 
-		ImageIcon exitButton = new ImageIcon(ChattingClient.class.getResource("../image/나가기.png"));
+		ImageIcon exitButton = new ImageIcon("src/main/java/org/example/image/exit.png");
 		exitRoomButton.setIcon(exitButton);
 		exitRoomButton.setBorderPainted(false);
 		exitRoomButton.setFocusPainted(false);
@@ -391,7 +394,7 @@ public class ChattingClient extends JFrame {
 		messageSendButton.setBounds(398, 707, 66, 42);
 		chattingRoomPanel.add(messageSendButton);
 
-		ImageIcon sendButton = new ImageIcon(ChattingClient.class.getResource("../image/send-3.png"));
+		ImageIcon sendButton = new ImageIcon("src/main/java/org/example/image/send-3.png");
 		messageSendButton.setIcon(sendButton);
 		messageSendButton.setBorderPainted(false);
 		messageSendButton.setFocusPainted(false);

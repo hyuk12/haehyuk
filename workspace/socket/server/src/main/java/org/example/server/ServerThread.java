@@ -24,7 +24,6 @@ import org.example.dto.response.JoinRoomRespDto;
 import org.example.dto.response.MessageRespDto;
 import org.example.dto.response.ResponseDto;
 import org.example.entity.Room;
-import org.example.util.ServerUtil;
 
 import com.google.gson.Gson;
 
@@ -44,7 +43,7 @@ public class ServerThread extends Thread{
 	private String username;
 	private Room room;
 
-	private ServerUtil serverUtil;
+
 	private boolean isRunning = true;
 
 //	private String exitNickname;
