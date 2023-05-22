@@ -8,17 +8,17 @@ import NotFound from './pages/NotFound/NotFound';
 import OAuth2Merge from './pages/OAuth2Merge/OAuth2Merge';
 import PostRegister from './pages/Posts/PostRegister';
 import OAuth2Register from './pages/Register/OAuth2Register';
+import ForgotPassword from "./pages/Forgot/ForgotPassword";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path='/' element={<AuthRoute path={"/"} element={<Index />} />}/>
-        
+        <Route path='/auth/forgot/password' element={<AuthRoute path={"/auth/forgot/password"} element={<ForgotPassword />} />}/>
+
         <Route path='/mypage' element={<AuthRoute path={"/mypage"} element={<Index />} />}/>
         <Route path='/post/register' element={<AuthRoute path={"/post/register"} element={<PostRegister />} />}/>
-
-
         <Route path='/auth/login' element={<AuthRoute path={"/auth/login"} element={<Login />} />} />
         <Route path='/auth/register' />
         <Route path='/auth/oauth2/login' 
